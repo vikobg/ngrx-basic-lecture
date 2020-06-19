@@ -1,0 +1,13 @@
+<ng-container *ngIf="usersLoaded$ | async; else loading">
+  <div *ngFor="let user of users$ | async" [class.deleting]="(deletingUserId$ | async) === user.id" >
+    {{ user.id }}
+    {{ user.first_name }}
+    {{ user.last_name }}
+    {{ user.email }}
+
+    <button (click)="deleteUser(user.id)">X</button>
+  </div>
+</ng-container>
+<ng-template #loading>
+  loading
+</ng-template>
